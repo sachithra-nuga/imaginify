@@ -7,11 +7,15 @@ import { redirect } from 'next/navigation';
 
 const AddTransformationTypePage = async ({ params: { type } }: SearchParamProps) => {
   const { userId } = auth();
+  console.log('Auth result:', userId);
+
   const transformation = transformationTypes[type];
 
   if(!userId) redirect('/sign-in')
 
   const user = await getUserById(userId);
+
+  console.log('Auth result:', user);
 
   return (
     <>
